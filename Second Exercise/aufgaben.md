@@ -17,12 +17,14 @@ Sie dienen als Verhalten, das erhalten bleiben muss.
 
 Refaktoriere `exporters.py`:
 
-1. Erstelle die abstrakte Basisklasse `ReportExporter`.
+1. Erstelle die Basisklasse `ReportExporter`.
 2. Verschiebe die gemeinsame Schnittstelle in die abstrakte Methode
    `export(report)`.
 3. Lasse `TextReportExporter` und `JsonReportExporter` von
    `ReportExporter` erben.
 4. Das Ausgabeformat der bestehenden Exporter darf sich nicht ändern.
+
+Methoden kannst du mit @abstractmethod abstrakt definieren.
 
 ## Aufgabe 3: Factory Method einführen
 
@@ -49,21 +51,18 @@ sein. Ergänze außerdem Tests, die zeigen, dass:
 
 ## Aufgabe 5: Neues Format ergänzen
 
-Ergänze einen CSV-Export:
+Ergänze einen Markdown-Export.
 
-1. Erstelle `CsvReportExporter` in `exporters.py`.
-2. Erzeuge eine Kopfzeile `title,content` und eine Datenzeile für den Bericht.
-3. Erstelle `CsvReportCreator` in `report_creators.py`.
-4. Überschreibe im neuen Creator nur `factory_method()`.
-5. Ergänze passende Tests.
-6. Füge den neuen Creator in `main.py` ein.
+1. Erstelle in `exporters.py` die Klasse `MarkdownReportExporter`.
+2. Sie soll von `ReportExporter` erben.
+3. Die Methode `export()` soll zum Beispiel zurückgeben:
 
-Beispielausgabe:
+   `# Monatsbericht\n\nUmsatz: 1200 Euro`
 
-```text
-title,content
-Monatsbericht,Umsatz: 1200 Euro
-```
+4. Erstelle in `report_creators.py` den passenden `MarkdownReportCreator`.
+5. Überschreibe dort nur `factory_method()`.
+6. Ergänze passende Test.
+7. Füge den neuen Creator in `main.py` ein.
 
 ## Reflexion
 
